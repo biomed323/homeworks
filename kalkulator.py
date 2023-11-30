@@ -1,31 +1,36 @@
+def calculator():
+    while True:
+        try:
+            num1 = float(input("Введіть перше число: "))
+            operator = input("Введіть операцію (+, -, *, /): ")
+            num2 = float(input("Введіть друге число: "))
 
-q1 = int (input('Введіть число 1: '))
-q2 = int (input('Введіть число 2: '))
+            if operator == '+':
+                result = num1 + num2
+            elif operator == '-':
+                result = num1 - num2
+            elif operator == '*':
+                result = num1 * num2
+            elif operator == '/':
+                if num2 == 0:
+                    print("Помилка: Ділення на нуль неможливе.")
+                    continue  # Повторити цикл
+                else:
+                    result = num1 / num2
+            else:
+                print("Помилка: Невідома операція.")
+                continue  # Повторити цикл
 
-v = int (input('1 Додавання \n 2 Віднімання \n 3 Ділення \n 4 Множення \n'))
+            print("Результат:", result)
 
-if v == 1:
-    r = q1 + q2
-    p = 'Додавання'
-    t = p
-if v == 2:
-    r = q1 - q2
-    l = 'Віднімання'
-    t = l
-if v == 3:
-    r = float(q1 / q2)
-    m = 'Ділення'
-    t = m
-if v == 4:
-    r = q1 * q2
-    n = 'Множення'
-    t = n
-print ('Результат ',t,' = ',r)
+        except ValueError:
+            print("Помилка: Будь ласка, введіть числа коректно.")
+        except Exception as e:
+            print(f"Помилка: {e}")
 
-answer = input('Бажаєте продовжити?\n'
+        repeat = input("Бажаєте повторити операцію? (так/ні): ")
+        if repeat.lower() != 'так':
+            break
 
-      ' Введіть + якщо так і інщий символ, якщо ні: ')
-
-if answer != '+':
-
-        progam_is_running = False
+if __name__ == "__main__":
+    calculator()
